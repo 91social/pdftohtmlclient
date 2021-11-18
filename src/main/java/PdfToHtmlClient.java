@@ -70,10 +70,10 @@ public class PdfToHtmlClient {
 
 
     String source , destination, password;
-    if(args.length<=3)
+    if(args.length!=3 && args.length!=2)
     {
-      System.err.print("please enter source destination and password");
-      //System.exit(1);
+      System.err.println("please enter source, destination and password");
+      System.exit(1);
     }
     // Access a service running on the local machine on port 50051
     String target = "localhost:50051";
@@ -87,10 +87,14 @@ public class PdfToHtmlClient {
         System.exit(1);
       }
     }
+
     
-      source = "../../sample.pdf";
-      destination = "output";
-      password = "password";
+      source = args[0];
+      destination = args[1];
+      if(args.length==3)
+      password = args[2];
+      else
+      password = "xxxx";
 
     // Create a communication channel to the server, known as a Channel. Channels are thread-safe
     // and reusable. It is common to create channels at the beginning of your application and reuse
