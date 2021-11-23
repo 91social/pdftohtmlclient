@@ -1,20 +1,4 @@
-/*
- * Copyright 2015 The gRPC Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package io.grpc.examples.pdftohtml;
+package com.datasahi.pdftohtml.grpc;
 
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
@@ -24,18 +8,15 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 import javax.xml.transform.Source;
-/**
- * A simple client that requests a greeting from the {@link HelloWorldServer}.
- */
+
 public class PdfToHtmlClient {
   private static final Logger logger = Logger.getLogger(PdfToHtmlClient.class.getName());
 
-  //private final ConvertPdfToHtml.BlockingStub blockingStub;
+  
 
  private final  ConvertPdfToHtmlGrpc.ConvertPdfToHtmlBlockingStub blockingStub;
-  /** Construct client for accessing HelloWorld server using the existing channel. */
+
   public PdfToHtmlClient(Channel channel) {
     // 'channel' here is a Channel, not a ManagedChannel, so it is not this code's responsibility to
     // shut it down.
@@ -44,10 +25,9 @@ public class PdfToHtmlClient {
     blockingStub = ConvertPdfToHtmlGrpc.newBlockingStub(channel);
   }
 
-  /** Say hello to server. */
+ 
   public void convertRequest(String source, String destination, String password) {
     logger.info("Will try to connect to " + source + " ... "+ destination);
-    //Request request = Request.newBuilder().setName(name).build();
     
     Request request = Request.newBuilder().setSource(source).setDestination(destination).setPassword(password).build();
     
@@ -59,13 +39,9 @@ public class PdfToHtmlClient {
       return;
     }
     logger.info("Operation: " + response.getStatus());
-    //logger.info("Greeting: " + response.getMessage());
   }
 
-  /**
-   * Greet server. If provided, the first element of {@code args} is the name to use in the
-   * greeting. The second argument is the target server.
-   */
+  
   public static void main(String[] args) throws Exception {
 
 
@@ -77,12 +53,11 @@ public class PdfToHtmlClient {
     }
     // Access a service running on the local machine on port 50051
     String target = "localhost:50051";
-    //Allow passing in the user and target strings as command line arguments
+
     if (args.length > 0) {
       if ("--help".equals(args[0])) {
         System.err.println("Usage: [name [target]]");
         System.err.println("");
-        //System.err.println("  name    The name you wish to be greeted by. Defaults to " + user);
         System.err.println("  target  The server to connect to. Defaults to " + target);
         System.exit(1);
       }

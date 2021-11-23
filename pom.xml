@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>io.grpc</groupId>
-  <artifactId>examples</artifactId>
+  <groupId>com.datasahi</groupId>
+  <artifactId>pdftohtml</artifactId>
   <packaging>jar</packaging>
   <!-- Feel free to delete the comment at the end of these lines. It is just
        for safely updating the version in our release process. -->
   <version>1.41.0</version><!-- CURRENT_GRPC_VERSION-->
-  <name>examples</name>
+  <name>pdftohtml</name>
   <url>https://github.com/grpc/grpc-java</url>
 
   <properties>
@@ -103,28 +103,7 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <version>1.4.1</version>
-        <executions>
-          <execution>
-            <id>enforce</id>
-            <configuration>
-              <rules>
-                <requireUpperBoundDeps>
-                	<!--<excludes>
-                    	<exclude>com.google.guava:guava</exclude>
-                  	</excludes>-->
-                </requireUpperBoundDeps>
-              </rules>
-            </configuration>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+      
     </plugins>
   </build>
 </project>
